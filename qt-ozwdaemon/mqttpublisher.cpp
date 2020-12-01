@@ -58,6 +58,7 @@ mqttpublisher::mqttpublisher(QSettings *settings, QObject *parent) :
 {
     this->settings = settings;
     this->m_client = new QMqttClient(this);
+    this->m_client->setKeepAlive(360);
     this->m_client->setHostname(settings->value("MQTTServer", "127.0.0.1").toString());
     this->m_client->setPort(static_cast<quint16>(settings->value("MQTTPort", 1883).toInt()));
     this->m_client->setClientId(QString("qt-openzwave-%1").arg(settings->value("Instance", 1).toInt()));
