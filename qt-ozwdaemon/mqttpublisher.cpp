@@ -65,7 +65,7 @@ mqttpublisher::mqttpublisher(QSettings *settings, QObject *parent) : QObject(par
     QString mqtt_keep_alive = qgetenv("MQTT_KEEP_ALIVE");
     if (!mqtt_keep_alive.isEmpty())
     {
-        this->m_client->setKeepAlive(mqtt_keep_alive);
+        this->m_client->setKeepAlive(mqtt_keep_alive.toInt());
     }
 
     if (settings->contains("MQTTUsername"))
